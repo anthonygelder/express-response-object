@@ -1,9 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const cors = require('cors');
 const app = express();
 app.use(morgan('common'));
-
+app.use(cors());
 const apps = require('./playstore-data.js')
 
 app.get('/apps', (req, res) => {
@@ -30,6 +30,4 @@ app.get('/apps', (req, res) => {
     res.json(results);
 });
 
-app.listen(8000, () => {
-  console.log('Express server is listening on port 8000!');
-});
+module.exports = app;
